@@ -3,7 +3,7 @@ Need to do :
 - Responsive design
 - Fix some issues with the filtering
 
-# Frontend Mentor - E-commerce product page solution
+# Frontend Mentor - Job listings with filtering challenge
 
 This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Preview](https://github.com/CecileHonnorat/eCommerce-Challenge/blob/master/public/images/desktop-design.jpg)
+![Preview](https://github.com/CecileHonnorat/jobListing-challenge/blob/master/public/desktop-design.jpg)
 
 
 ### Links
