@@ -8,6 +8,8 @@ export default function Joblist(props) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [jobList, setJobList] = useState(data);
 
+  let windowSize = window.screen.width
+
   // // Display list of jobs
   useEffect(() => {
     filterJobs()
@@ -80,14 +82,14 @@ export default function Joblist(props) {
     let classNameFeatured;
     if (item.featured === true) {
       featured = <Tag color='hsl(180, 14%, 20%)'
-        style={{ borderRadius: '25%', height: '1.25rem', margin: '15px' }}>FEATURED</Tag>
+        style={{ borderRadius: '15px', height: '1.35rem', fontWeight:'700', fontSize:'12px' }}>FEATURED</Tag>
         classNameFeatured= "jobListFeatured "
     }else{
       classNameFeatured="jobList"
     }
     if (item.new === true) {
       newJob = <Tag color='hsl(180, 29%, 50%)'
-        style={{ borderRadius: '25%', height: '1.25rem', margin: '15px' }}>NEW!</Tag>
+        style={{ borderRadius: '15px', height: '1.35rem', marginLeft:'8px', fontWeight:'700', fontSize:'12px' }}>NEW!</Tag>
     }
     // Get all languages for each job :
     let languages = [];
@@ -110,6 +112,7 @@ export default function Joblist(props) {
     }
     return (
       <div className={classNameFeatured} key={i}>
+        <div className={windowSize < 500 ? 'smartphone' : 'desktop'}>
         <section className='jobInfo'>
           <img src={item.logo} alt='logo' className='logo' />
           <div className='details'>
@@ -127,6 +130,7 @@ export default function Joblist(props) {
           <Button className='buttonFilter' onClick={() => selectFilters(item.level)}>{item.level}</Button>
           {lang}
           {tool}
+        </div>
         </div>
       </div>)
   })

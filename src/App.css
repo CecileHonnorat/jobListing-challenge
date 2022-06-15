@@ -6,6 +6,7 @@
  font-family: 'League Spartan', sans-serif ;
  font-size: 15px;
  height: 100%;
+ width: 100vw;
 }
 
 .jobList {
@@ -27,9 +28,9 @@
   justify-content: space-between;
   border-left: 5px solid hsl(180, 29%, 50%);
 }
-
 .companyInfo{
  display: flex;
+ align-items: center;
 }
 .details{
   display: flex;
@@ -47,9 +48,14 @@
 }
 .filters{
   display: flex;
-  flex-wrap: wrap;
+  justify-items: end;
   align-items: center;
   margin: 35px;
+}
+.desktop{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .buttonFilter{
   color: hsl(180, 29%, 50%);
@@ -122,4 +128,90 @@ h2:hover{
 .clear:hover{
   color: hsl(180, 29%, 50%);
   cursor: pointer;
+}
+
+@media (max-width: 500px){
+  .logo{
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-left: 10px;
+   margin-bottom: 25px;
+  }
+  .jobList {
+    display: flex;
+    background-color: white;
+    box-shadow: hsl(180, 8%, 52%) 0px 4px 12px;
+    border-radius: 5px;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-left: none;
+    width: 90%;
+    margin: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .jobListFeatured {
+    display: flex;
+    background-color: white;
+    box-shadow: hsl(180, 8%, 52%) 0px 4px 12px;
+    border-radius: 5px;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-left: 5px solid hsl(180, 29%, 50%);
+    width: 90%;
+    margin: 1.5rem;
+    margin-top: 3.5rem;
+    }
+  .jobInfo{
+    display: block;
+    flex-direction: column;
+    margin-top: -65px;
+    margin-left: 20px;
+  }
+  h2{
+    font-weight: 700;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-size: 17px;
+  }
+  .companyInfo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -25px;
+   }
+   .details{
+     display: block;
+     flex-direction: column;
+     justify-content: center;
+   }
+  .subtitle{
+    color: grey;
+    font-weight: 500;
+    margin-top: -5px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid grey;
+  }
+  .filters{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+  }
+  .filterBox{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: white;
+    box-shadow: hsl(180, 8%, 52%) 0px 4px 12px;
+    border-radius: 5px;
+    margin: -2.25rem 1.5rem 3rem 1.5rem ;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .smartphone{
+    justify-content: space-between;
+    width: 100%;
+  }
 }
