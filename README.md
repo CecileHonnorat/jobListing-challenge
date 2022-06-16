@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: not online yet! []()
+- Live Site URL: [click here](https://joblistings-ch.netlify.app/)
 
 ## My process
 
