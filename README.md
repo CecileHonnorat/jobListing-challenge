@@ -1,7 +1,3 @@
-WORK STILL IN PROGRESS !!!
-Need to do : 
-- Responsive design
-- Fix some issues with the filtering
 
 # Frontend Mentor - Job listings with filtering challenge
 
