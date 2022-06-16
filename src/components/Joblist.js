@@ -10,9 +10,17 @@ export default function Joblist(props) {
 
   let windowSize = window.screen.width
 
-  // // Display list of jobs
+  // // Display list of jobs and find the jobs matching the filters 
   useEffect(() => {
-    filterJobs()
+    if (selectedFilters.length) {
+      setJobList(
+        data.filter((e) =>
+          selectedFilters.every((tag) =>
+            [e.level, e.role, ...e.languages, ...e.tools].includes(tag)))
+      )
+    } else {
+      setJobList(data)
+    }
   }, [selectedFilters]);
 
   // Add unique filters
@@ -35,7 +43,7 @@ export default function Joblist(props) {
     setSelectedFilters([...selectedFilters])
   }
 
-  
+
   // Show the box with filters
   let filterBox;
   let filters = selectedFilters.map((filter, f) => {
@@ -54,42 +62,42 @@ export default function Joblist(props) {
     filterBox = <></>
   }
 
-    // Find ths jobs that match the filters
-    let dataFiltered;
-    let match;
-    function filterJobs() {
-      if (selectedFilters.length > 0) {
-        for (let i = 0; i < selectedFilters.length; i++) {
-          match = data.filter(element =>
-            element.level === selectedFilters[i] ||
-            element.role === selectedFilters[i] ||
-            element.languages.includes(selectedFilters[i]) ||
-            element.tools.includes(selectedFilters[i])
-          )
-        }
-        setJobList(match)
-      } else {
-        setJobList(data)
-      }
-    }
-  
-    console.log(jobList)
+  // Find ths jobs that match the filters
+  // let dataFiltered;
+  // let match;
+  // function filterJobs() {
+  //   if (selectedFilters.length > 0) {
+  //     for (let i = 0; i < selectedFilters.length; i++) {
+  //       match = data.filter(element =>
+  //         element.level === selectedFilters[i] ||
+  //         element.role === selectedFilters[i] ||
+  //         element.languages.includes(selectedFilters[i]) ||
+  //         element.tools.includes(selectedFilters[i])
+  //       )
+  //     }
+  //     setJobList(match)
+  //   } else {
+  //     setJobList(data)
+  //   }
+  // }
+
+  console.log(jobList)
 
   // Show the list of jobs with and without filters
-  dataFiltered = jobList.map((item, i) => {
+ let dataFiltered = jobList.map((item, i) => {
     let featured;
     let newJob;
     let classNameFeatured;
     if (item.featured === true) {
       featured = <Tag color='hsl(180, 14%, 20%)'
-        style={{ borderRadius: '15px', height: '1.35rem', fontWeight:'700', fontSize:'12px' }}>FEATURED</Tag>
-        classNameFeatured= "jobListFeatured "
-    }else{
-      classNameFeatured="jobList"
+        style={{ borderRadius: '15px', height: '1.35rem', fontWeight: '700', fontSize: '12px' }}>FEATURED</Tag>
+      classNameFeatured = "jobListFeatured "
+    } else {
+      classNameFeatured = "jobList"
     }
     if (item.new === true) {
       newJob = <Tag color='hsl(180, 29%, 50%)'
-        style={{ borderRadius: '15px', height: '1.35rem', marginLeft:'8px', fontWeight:'700', fontSize:'12px' }}>NEW!</Tag>
+        style={{ borderRadius: '15px', height: '1.35rem', marginLeft: '8px', fontWeight: '700', fontSize: '12px' }}>NEW!</Tag>
     }
     // Get all languages for each job :
     let languages = [];
@@ -113,24 +121,24 @@ export default function Joblist(props) {
     return (
       <div className={classNameFeatured} key={i}>
         <div className={windowSize < 500 ? 'smartphone' : 'desktop'}>
-        <section className='jobInfo'>
-          <img src={item.logo} alt='logo' className='logo' />
-          <div className='details'>
-            <section className='companyInfo'>
-              <h1>{item.company}</h1>
-              {newJob}
-              {featured}
-            </section>
-            <h2>{item.position}</h2>
-            <p className='subtitle'>{item.postedAt}  &#8226;  {item.contract} &#8226; {item.location}</p>
+          <section className='jobInfo'>
+            <img src={item.logo} alt='logo' className='logo' />
+            <div className='details'>
+              <section className='companyInfo'>
+                <h1>{item.company}</h1>
+                {newJob}
+                {featured}
+              </section>
+              <h2>{item.position}</h2>
+              <p className='subtitle'>{item.postedAt}  &#8226;  {item.contract} &#8226; {item.location}</p>
+            </div>
+          </section>
+          <div className='filters'>
+            <Button className='buttonFilter' onClick={() => selectFilters(item.role)}>{item.role}</Button>
+            <Button className='buttonFilter' onClick={() => selectFilters(item.level)}>{item.level}</Button>
+            {lang}
+            {tool}
           </div>
-        </section>
-        <div className='filters'>
-          <Button className='buttonFilter' onClick={() => selectFilters(item.role)}>{item.role}</Button>
-          <Button className='buttonFilter' onClick={() => selectFilters(item.level)}>{item.level}</Button>
-          {lang}
-          {tool}
-        </div>
         </div>
       </div>)
   })
